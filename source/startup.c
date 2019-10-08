@@ -2,7 +2,14 @@
 
 extern void main(void);
 void reset_handler(void) {
-    /* jump to C entry point */
+    uint32_t* end_text = &_endtext;
+    uint32_t* start_data = &_startdata;
+    uint32_t* end_data = &_enddata;
+    while(start_data<end_data) *start_data++=*end_text++;
+    uint32_t* start_bss = &_startbss;
+    uint32_t* endbss = &_endbss;
+    while(start_bss<endbss)*start_bss++=0;
+
     main();
 }
 
