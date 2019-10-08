@@ -13,7 +13,7 @@ SECTIONS
         *(.text)
         *(.text.*)
         *(.rodata)
-        _endtext=.;
+        _endtext = .;
     }>FLASH
     .data : AT(_endtext)
     {
@@ -24,8 +24,8 @@ SECTIONS
     }>SRAM
     .bss :
     {
-        _startbss=.;
+        _startbss = .;
         *(.bss)
-        _endbss =.;
+        _endbss = .;
     }>SRAM
 }
