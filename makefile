@@ -5,12 +5,8 @@ CFLAG = -std=gnu99 \
 	 -mcpu=cortex-m4 \
 	 -Wl,-T main.ld -nostartfiles 
 TARGET := ./main.bin
-OBJ := *.o
 SOURCE := ./source/*.c
 all: $(TARGET)
-$(OBJ):$(SOURCE)
-	$(CC) -c $^
-
 $(TARGET):$(SOURCE)
 	@echo "build" 
 	$(CC) $(CFLAG)  -o main.elf  $^
