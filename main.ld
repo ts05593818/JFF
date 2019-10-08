@@ -13,15 +13,19 @@ SECTIONS
         *(.text)
         *(.text.*)
         *(.rodata)
-
+        _endtext=.;
     }>FLASH
-    .data :
+    .data : AT(_endtext)
     {
+        _startdata = .;
         *(.data)
         *(.data.*)
+        _enddata = .;
     }>SRAM
     .bss :
     {
+        _startbss=.;
         *(.bss)
+        _endbss =.;
     }>SRAM
 }
