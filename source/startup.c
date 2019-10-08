@@ -1,4 +1,9 @@
 #include <stdint.h>
+extern uint32_t _endtext;
+extern uint32_t _startdata;
+extern uint32_t _enddata;
+extern uint32_t _startbss;
+extern uint32_t _endbss;
 
 extern void main(void);
 void reset_handler(void) {
