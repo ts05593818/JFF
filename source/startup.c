@@ -4,6 +4,7 @@ extern uint32_t _startdata;
 extern uint32_t _enddata;
 extern uint32_t _startbss;
 extern uint32_t _endbss;
+extern uint32_t _estack;
 
 extern void main(void);
 void reset_handler(void) {
@@ -17,7 +18,23 @@ void reset_handler(void) {
 
     main();
 }
-
+void nmi_handler (void){
+    while(1);
+}
+void hard_fault_handler(void){
+    while(1);
+}
+void mem_manage_handler(void){
+    while(1);
+}
+void bus_fault_handler(void){
+    while (1);       
+}
 __attribute((section(".isr_vector"))) uint32_t *isr_vectors[] = {
-    0, (uint32_t *)reset_handler, /* code entry point */
+    (uint32_t *)&_estack, 
+    (uint32_t *)reset_handler, /* code entry point */
+    (uint32_t *)nmi_handler,
+    (uint32_t *)hard_fault_handler,
+    (uint32_t *)mem_manage_handler,
+    (uint32_t *)bus_fault_handler,
 };
