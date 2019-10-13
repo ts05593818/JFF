@@ -28,4 +28,5 @@ SECTIONS
         *(.bss)
         _endbss = .;
     }>SRAM
+    _estack = ORIGIN(SRAM)+LENGTH(SRAM);
 }

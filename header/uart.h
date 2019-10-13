@@ -11,5 +11,6 @@
 #define APB1_UART5      (20)
 
 void uart_init();
-void uart_put_c();
+void uart_put_c(uint8_t data);
+void uart_get_c(uint8_t* data);
 #endif
