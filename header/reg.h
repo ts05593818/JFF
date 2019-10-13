@@ -10,7 +10,7 @@
 #define GPIOA_BASE          (0x40020000UL)
 #define USB_OTG_FS_BASE     (0x50000000UL)
 #define USART2_BASE         (0x40004400UL)
-
+#define GPIOC_BASE          (0x40020800UL)
 /***********RCC related***************/
 /************CR reset value: 0x0000 xx83************************/
 #define RCC_CR              (__REG(RCC_BASE+0x00))
