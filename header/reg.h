@@ -3,7 +3,7 @@
 #include "stdint.h"
 
 
-#define __REG(x)        *((volatile uint32_t*)x)
+#define __REG(x)        *((volatile uint32_t*)(x))
 
 /**************register base address***************/
 #define RCC_BASE            (0x40023800UL)
