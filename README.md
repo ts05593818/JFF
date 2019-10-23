@@ -73,10 +73,44 @@ monitor targets
 ```
 ![monitor targets](https://i.imgur.com/ZWEEcvz.jpg)
 之後可開始載入檔案(elf、bin)
+gdb 從elf獲取當前燒錄程式的資訊，得知中斷點的Program Counter位置或是中斷條件。並控制CPU停在軟體中斷點位置。存取特定記憶體位置的資料。
 ```
-file ./xxx.elf (開檔 類似 C FILE)
+file ./xxx.elf
 monitor reset 
 monitor halt
 monitor load (下載程式至Flash)
 ```
 
+## USB OTG REGISTER
+外設模式支援IN OUT(EP0+EP1~3)共8通道，並自帶FIFO
+![模式介紹](https://i.imgur.com/1d1ccZ9.jpg)
+![ENDPOINT介紹](https://i.imgur.com/rBNCdks.jpg)
+![ENDPOINT介紹](https://i.imgur.com/ibg8wyA.jpg)
+![ENDPOINT控制](https://i.imgur.com/YxnGkod.jpg)
+![ENDPOINT傳輸](https://i.imgur.com/mygdYTv.jpg)
+![ENDPOINT中斷](https://i.imgur.com/DsmIXdz.jpg)
+
+
+
+### CSR MEMORY MAP
+![MEMORY MAP](https://i.imgur.com/cgz4QIV.jpg)
+### DEVICE MODE MEMORY MAP
+OTG_FX_AAAAx x<-表示EP號碼，Address Offset為AddressBase + 0x20*x，x=1~3
+![DEVICE MODE MEMORY MAP1](https://i.imgur.com/hC6GfFd.jpg)
+![DEVICE MODE MEMORY MAP2](https://i.imgur.com/wutDHdR.jpg)
+
+### DATA FIFO ACCESS REGISTER MAP
+![DATA FIFO ACCESS MEMORY MAP](https://i.imgur.com/ozm5Rsy.jpg)
+
+### CLOCK GATE CSR MAP
+![CLOCKGATE](https://i.imgur.com/mzkntX3.jpg)
+
+### DEVICE INIT. STEPS
+![INIT STEP](https://i.imgur.com/Rsihpr1.jpg)
+
+
+
+
+FIFO REG   待完成 (在RCC_AHB REGISTER下)
+
+[-----REF----](https://www.crifan.com/files/doc/docbook/usb_basic/release/pdf/usb_basic.pdf)
