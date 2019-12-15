@@ -3,8 +3,14 @@
 
 #include <stdio.h>
 #include <stdarg.h>
-#include <uart.h>
+#include <string.h>
+#include "uart.h"
 
-#define buffer_size 100 
+
+#define high_bits(x) (x>>4 % 16)
+#define low_bits(x)  (x&15 % 16)
+
+
+int uart_print (const char *data,...);
 
 #endif
