@@ -8,7 +8,7 @@ int uart_print (const char *data,...) {
 
     while (data[count] != '\0') {
 
-        if (data[count] != '%') {       //output char data until '%'
+        if (data[count] != '%') {       //output char data until %
             uart_put_c(data[count++]);
             continue;
         }
