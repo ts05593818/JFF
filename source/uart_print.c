@@ -15,11 +15,15 @@ int uart_print (const char *data,...) {
 
         data++;         // backward a char
        
-            switch (data[count]) {
+            switch (data[count++]) {
             case 'd' : {
-                int dd;
-                dd=va_arg(arg_ptr,int);
-                uart_put_c(dd);
+                int dd,temp=0;
+                char buf[16]={0};
+                dd = va_arg(arg_ptr, int);
+                itoa(dd,buf,10);
+                while (buf[temp]) {
+                    uart_put_c(buf[temp++]);
+                }
                 break;
             }
             case 'c' : {
@@ -36,12 +40,27 @@ int uart_print (const char *data,...) {
                 }
                 break;
             };
-            case 'x' : {
-                int xx;
-                char hex_char[17]="0123456789ABCDEF";    // HEX string
-                xx=va_arg(arg_ptr,int);
-                uart_put_c(hex_char[high_bits(xx)]);
-                uart_put_c(hex_char[low_bits(xx)]);
+            case 'x': {
+                int xx,bytes,temp;
+                char hex_char[17] = "0123456789ABCDEF";  // HEX string
+                xx = va_arg(arg_ptr, int);
+                if (xx>167772145) { //4byte
+                    bytes=4;
+                }
+                else if (xx>65535) { //3byte
+                    bytes=3;
+                }
+                else if (xx>255) { //2byte
+                    bytes=2;
+                }
+                else { //1byte
+                    bytes=1;
+                }
+                while (bytes--) {
+                    temp=(xx >> 8 * (bytes))&255;
+                    uart_put_c(hex_char[high_bits(temp)]);
+                    uart_put_c(hex_char[low_bits(temp)]);                  
+                }
                 break;
             };
             default:
@@ -49,9 +68,6 @@ int uart_print (const char *data,...) {
             }
          va_end(arg_ptr); // free memory
    
-    }
-    
-
-    
+    } 
     return 0;  // ok 
 }
