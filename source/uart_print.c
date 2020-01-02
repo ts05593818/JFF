@@ -56,6 +56,8 @@ int uart_print (const char *data,...) {
                 else { //1byte
                     bytes=1;
                 }
+                uart_put_c('0');
+                uart_put_c('x');
                 while (bytes--) {
                     temp=(xx >> 8 * (bytes))&255;
                     uart_put_c(hex_char[high_bits(temp)]);
