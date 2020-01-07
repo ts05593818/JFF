@@ -23,7 +23,7 @@ https://www.usb.org/sites/default/files/usb_20_20190524.zip
 
 [GitURL](https://github.com/a910184/JFF.git)
 
-### before main() :need review 
+### before main() :
 
 [build code reference]
 (https://github.com/jserv/mini-arm-os)
