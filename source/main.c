@@ -2,6 +2,6 @@
 int main() {
     uart_init();
     while (1) {
-          ;
+        ;
     }
 }
