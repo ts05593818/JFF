@@ -1,15 +1,7 @@
 #include "..\header\main.h"
-
-int main(){
-   
+int main() {
     uart_init();
-    uint8_t data  = 0;
-   
-    while (1)
-    {
-        uart_put_c(data);
-        data++;
+    while (1) {
+        ;
     }
-    
 }
-
