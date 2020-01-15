@@ -10,6 +10,7 @@
 #define USB_OTG_FS_BASE (0x50000000UL)
 #define USART2_BASE     (0x40004400UL)
 #define GPIOC_BASE      (0x40020800UL)
+#define GPIOD_BASE      (0x40020C00UL)
 /***********RCC related***************/
 /************CR reset value: 0x0000 xx83************************/
 #define RCC_CR (__REG(RCC_BASE + 0x00))
@@ -57,7 +58,6 @@
 #define GPIO_AFRH(GPIO_BASE)    (__REG(GPIO_BASE + 0x24))
 
 /*************************USB OTG_FS related*******************************/
-
 
 #define FS_OTGCTL     (__REG(USB_OTG_FS_BASE + 0x000))
 #define FS_OTGINT     (__REG(USB_OTG_FS_BASE + 0x004))
