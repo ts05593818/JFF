@@ -4,6 +4,8 @@
 #include "stdint.h"
 #include "stdlib.h"
 #include "uart.h"
+#include "uart_print.h"
+
 
 #define HSE_CLK 8000000UL
 
